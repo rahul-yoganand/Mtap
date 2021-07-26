@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.ListView
 
 lateinit var  roomDb: WordRoomDb
 lateinit var wordDao: WordDao
 lateinit var etOne :EditText
+lateinit var listView:ListView
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         roomDb = WordRoomDb.getDatabase(this)
         wordDao = roomDb.wordDao()
         etOne=findViewById(R.id.etOne)
+        listView=findViewById(R.id.lvData)
+
     }
     fun dbHandler(view: View) {
 
@@ -30,5 +34,16 @@ class MainActivity : AppCompatActivity() {
         insertTask.execute()
 
 
+    }
+
+    fun getData(view: View) {
+      var task=  GetDataTask(this, listView,wordDao)
+        task.execute()
+
+    }
+
+    fun Delete(view: View) {
+        var task =DeleteTask(wordDao)
+        task.execute()
     }
 }
