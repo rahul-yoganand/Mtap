@@ -15,29 +15,30 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
 class AlarmManager : AppCompatActivity() {
-    lateinit var mNotificationManager:NotificationManager
-    val NOTIFICATION_ID=0
+    val NOTIFICATION_ID = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm_manager)
-        var btnToggle=findViewById<ToggleButton>(R.id.alarmToggle)
+        var btnToggle = findViewById<ToggleButton>(R.id.alarmToggle)
         //var contentintent= Intent(this,AlarmManager::class.java)
-        btnToggle.setOnCheckedChangeListener{_, isChecked->
-            if(isChecked){
+        btnToggle.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
                 deliverNotification()
-            Toast.makeText(this,"On",Toast.LENGTH_LONG).show()}
-            else {
-                Toast.makeText(this,"Off",Toast.LENGTH_LONG).show()}
+                Toast.makeText(this, "On", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Off", Toast.LENGTH_LONG).show()
+            }
             //var contentPendingIntent=PendingIntent.getActivity(this,NOTIFICATION_ID,contentintent,PendingIntent.FLAG_UPDATE_CURRENT)
 
         }
     }
+
     private fun createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "channel"
-            val descriptionText ="nothing"
+            val descriptionText = "nothing"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel("CHANNEL_ID", name, importance).apply {
                 description = descriptionText
@@ -48,7 +49,8 @@ class AlarmManager : AppCompatActivity() {
             notificationManager.createNotificationChannel(channel)
         }
     }
-    private fun deliverNotification(){
+
+    private fun deliverNotification() {
         createNotificationChannel()
         var builder = NotificationCompat.Builder(this, "CHANNEL_ID")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
