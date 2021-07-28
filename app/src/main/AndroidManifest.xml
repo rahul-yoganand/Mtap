@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mtap">
+
     <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
 
     <application
         android:allowBackup="true"
@@ -10,18 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mtap">
-
-        <activity android:name=".contentProviders">
+        <activity android:name=".contentProvidersCall">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".contentProviders">
         </activity>
-        <activity android:name=".AlarmManager">
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".AlarmManager"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="open Mtap2" />
