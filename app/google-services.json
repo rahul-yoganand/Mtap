@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1068008042842",
+    "project_id": "mtap-cf8aa",
+    "storage_bucket": "mtap-cf8aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068008042842:android:644aaee376683104680363",
+        "android_client_info": {
+          "package_name": "com.example.mtap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068008042842-9f70smd0d1i69jhnqqmkaq47j6d52fi9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxKNFw2-ZdN-93BRMvFeIDhBQI-Qopw48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068008042842-9f70smd0d1i69jhnqqmkaq47j6d52fi9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

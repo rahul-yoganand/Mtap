@@ -1,45 +1,38 @@
 package com.example.mtap
 
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 
-lateinit var name: EditText
+
 class LoginActivity : AppCompatActivity() {
+    lateinit var get: Button
+    lateinit var name:EditText
+    lateinit var author:TextView
+    lateinit var title:TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        name=findViewById(R.id.etUserName)
-
-        
-    }
-
-    override fun onPause() {
-        super.onPause()
-        saveData()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        restoreData()
-    }
-    private fun saveData(){
-        //get name from editText
-        var data = name.text.toString()
-        var sharedPreferences= getSharedPreferences("backup", MODE_PRIVATE)
-        var editor=sharedPreferences.edit()
-        editor.putString("personName",data)
-        editor.apply()
-
-    }
-    private fun restoreData(){
-        var sharedPreferences = getSharedPreferences("backup", MODE_PRIVATE)
-        //get data from file
-        var data  = sharedPreferences.getString("personName","")
-        //set the data into edittext
-        name.setText(data)
+        get = findViewById(R.id.getData)
+        name=findViewById(R.id.name)
+        author=findViewById(R.id.author)
+        title=findViewById(R.id.title)
 
 
     }
+
+    fun searchBookApi(view: View) {
+        var queryString= name.text.toString()
+        FetchBook(title,author).execute(queryString)
+
+
+    }
+
 }
